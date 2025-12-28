@@ -12,10 +12,33 @@ body {
 
 /* HERO */
 .hero {
-  background: linear-gradient(to right, #f8cdda, #fbd3e9);
-  min-height: 20vh;
+  height: 55vh;
+  min-height: 380px;
   padding: 20px;
+  position: relative;
+
+  background: linear-gradient(
+    270deg,
+    #fbd3e9,
+    #f8cdda,
+    #fbc2eb,
+    #fad0c4
+  );
+  background-size: 600% 600%;
+  animation: gradientMove 12s ease infinite;
 }
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 
 .navbar {
   display: flex;
@@ -88,21 +111,42 @@ h2 {
 
 /* GALLERY */
 .gallery-grid img {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 images per row */
   width: 50%;
-  height: 250px;
+  height: 180px;
   object-fit: cover;
   border-radius: 15px;
+  gap: 15px;
+  margin: 0 auto;
 }
+.gallery {
+  padding: 60px 20px;
+  text-align: center;
+}
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* SIDE BY SIDE */
+  gap: 16px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.gallery-grid img {
+  width: 100%;
+  height: 160px; 
+  aspect-ratio: 1 / 1;          /* controls tall images */
+  object-fit: cover;       /* prevents stretching */
+  border-radius: 20px;
+  display: block;
+}
+@media (min-width: 768px) {
+  .gallery-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 
-
-.img-placeholder {
-  height: 150px;
-  background: #ddd;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 15px;
-  color: #666;
+  .gallery-grid img {
+    height: 200px;
+  }
 }
 
 .note {
